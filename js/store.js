@@ -77,7 +77,6 @@
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-		console.log(todos)
 
 		callback = callback || function () {};
 
@@ -89,16 +88,15 @@
 			for (var i = 0; i < 6; i++) {
 				newId += charset.charAt(Math.floor(Math.random() * charset.length));
 			}
+			for(let j = 0; j < todos.length; j++){
+				if(newId ==	 todos[j].id){
+					newId = ""
+					idDefine()
+				}
+			}
 		}
 
 		idDefine()
-
-		for(let j = 0; j < todos.length; j++){
-			if(newId ==	 todos[j].id){
-				newId = ""
-				idDefine()
-			}
-		}
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {

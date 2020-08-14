@@ -96,6 +96,7 @@
 		var self = this;
 		var viewCommands = {
 			showEntries: function () {
+				console.log(parameter)
 				self.$todoList.innerHTML = self.template.show(parameter);
 			},
 			removeItem: function () {
